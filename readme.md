@@ -1,6 +1,6 @@
 # Coffee GIF Chatbot
 This is an Azure Bot Framework sample that uses LUIS and the giphy API to return a random G-rated coffee gif when you ask for it. 
-
+![Coffee Bot](https://user-images.githubusercontent.com/780735/37351816-ea945904-26a9-11e8-9f17-dad6cbd874c9.PNG)
 
 # Creating your own
 Creating your own chatbot is really easy. We'll use a Web App Bot, hosted in an Azure app service, so you can deploy code to it from Visual Studio. The chatbot is just a WebApi project with Bot Framework dialogs and LUIS integration. 
