@@ -39,4 +39,22 @@ You can create more of these async methods and tag them accordingly with attribu
 ## Grabbing a random GIF
 [Giphy](https://www.giphy.com) has a developer API you can sign up for which has a random GIF feature. Sign up for an API key and use the code in GifService.cs to connect to it. Make sure to put your API key in Keys.cs. 
 
+```
+public async Task<CoffeeGif> GetRandomCoffeeGif()
+{
+    using (var client = new HttpClient())
+    {
+        var result = await client.GetAsync(serviceUrl);
+        var content = await result.Content.ReadAsStringAsync();
+        JObject obj = JObject.Parse(content);
+        CoffeeGif reply = new CoffeeGif
+        {
+            GiphyWebUrl = obj["data"]["bitly_gif_url"].ToString(),
+            GifUrl = obj["data"]["images"]["fixed_width"]["url"].ToString()
+        };
+        return reply;
+    }
+}
+```
+
 This service is then used in BasicLuisDialog.cs in the intent handler for `Brew`.
