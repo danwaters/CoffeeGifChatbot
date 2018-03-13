@@ -1,6 +1,7 @@
 # Coffee GIF Chatbot
 This is an Azure Bot Framework sample that uses LUIS and the giphy API to return a random G-rated coffee gif when you ask for it. 
 
+
 # Creating your own
 Creating your own chatbot is really easy. We'll use a Web App Bot, hosted in an Azure app service, so you can deploy code to it from Visual Studio. The chatbot is just a WebApi project with Bot Framework dialogs and LUIS integration. 
 
@@ -37,7 +38,7 @@ You can create more of these async methods and tag them accordingly with attribu
 [BasicLuisDialog.cs](https://github.com/danwaters/CoffeeGifChatbot/blob/b3f13f8fab0306baa479457faa2fc5f263a53fa6/Dialogs/BasicLuisDialog.cs#L48)
 
 ## Grabbing a random GIF
-[Giphy](https://www.giphy.com) has a developer API you can sign up for which has a random GIF feature. Sign up for an API key and use the code in GifService.cs to connect to it. Make sure to put your API key in Keys.cs. 
+[Giphy](https://www.giphy.com) has a developer API you can sign up for which has a random GIF feature. Sign up for an API key and use the code in [GifService.cs](https://github.com/danwaters/CoffeeGifChatbot/blob/master/Services/GifService.cs) to connect to it. Make sure to put your API key in Keys.cs. 
 
 ```
 public async Task<CoffeeGif> GetRandomCoffeeGif()
@@ -58,3 +59,11 @@ public async Task<CoffeeGif> GetRandomCoffeeGif()
 ```
 
 This service is then used in BasicLuisDialog.cs in the intent handler for `Brew`.
+
+## Attach an image to the message
+The following code in `BasicLuisDialog.cs` (Brew intent handler) will attach the gif to the message back to the user requesting coffee. 
+
+# Testing your bot locally
+Run your project from Visual Studio. It will launch a browser that points to something like `localhost:3987` (port may vary). You can then connect to your bot with the [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases). 
+
+Now, when you ask your bot for coffee, you'll get a sassy gif!
