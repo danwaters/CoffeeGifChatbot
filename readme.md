@@ -58,10 +58,10 @@ public async Task<CoffeeGif> GetRandomCoffeeGif()
 }
 ```
 
-This service is then used in BasicLuisDialog.cs in the intent handler for `Brew`.
+This service is then used in [BasicLuisDialog.cs](https://github.com/danwaters/CoffeeGifChatbot/blob/master/Dialogs/BasicLuisDialog.cs) in the intent handler for `Brew`.
 
 ## Attach an image to the message
-The following code in `BasicLuisDialog.cs` (Brew intent handler) will attach the gif to the message back to the user requesting coffee. 
+The following code in [BasicLuisDialog.cs](https://github.com/danwaters/CoffeeGifChatbot/blob/master/Dialogs/BasicLuisDialog.cs) (Brew intent handler) will attach the gif to the message back to the user requesting coffee. 
 ```
     [LuisIntent("Brew")]
     public async Task BrewIntent(IDialogContext context, LuisResult result)
