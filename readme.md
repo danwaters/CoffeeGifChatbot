@@ -63,19 +63,19 @@ This service is then used in BasicLuisDialog.cs in the intent handler for `Brew`
 ## Attach an image to the message
 The following code in `BasicLuisDialog.cs` (Brew intent handler) will attach the gif to the message back to the user requesting coffee. 
 ```
-        [LuisIntent("Brew")]
-        public async Task BrewIntent(IDialogContext context, LuisResult result)
-        {
-            var giphy = await new GifService().GetRandomCoffeeGif();
+    [LuisIntent("Brew")]
+    public async Task BrewIntent(IDialogContext context, LuisResult result)
+    {
+        var giphy = await new GifService().GetRandomCoffeeGif();
 
-            var msg = context.MakeMessage();
-            msg.Attachments.Add(new Connector.Attachment(contentType: "image/gif", contentUrl: giphy.GifUrl));
-            msg.Text = $"Here's your coffee: {giphy.GiphyWebUrl}";
+        var msg = context.MakeMessage();
+        msg.Attachments.Add(new Connector.Attachment(contentType: "image/gif", contentUrl: giphy.GifUrl));
+        msg.Text = $"Here's your coffee: {giphy.GiphyWebUrl}";
 
-            await context.PostAsync(msg);
-            context.Wait(MessageReceived);
-        }
-        ```
+        await context.PostAsync(msg);
+        context.Wait(MessageReceived);
+    }
+```
 # Testing your bot locally
 Run your project from Visual Studio. It will launch a browser that points to something like `localhost:3987` (port may vary). You can then connect to your bot with the [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases). 
 
